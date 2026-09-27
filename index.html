@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Prakash Karekar - Software Developer, AI Engineer and CTO portfolio." />
+  <title>Prakash Karekar | Portfolio</title>
+
+  <style>
+    :root {
+      --bg: #07111f;
+      --bg-2: #0d1b2e;
+      --text: #eef6ff;
+      --muted: #a8b8cc;
+      --primary: #6ee7ff;
+      --secondary: #9b8cff;
+      --glass: rgba(255, 255, 255, 0.075);
+      --glass-border: rgba(255, 255, 255, 0.15);
+      --shadow: 0 25px 70px rgba(0, 0, 0, 0.35);
+      --radius: 24px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 15% 15%, rgba(110, 231, 255, 0.14), transparent 30%),
+        radial-gradient(circle at 85% 10%, rgba(155, 140, 255, 0.17), transparent 28%),
+        linear-gradient(135deg, var(--bg), var(--bg-2));
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      width: 420px;
+      height: 420px;
+      border-radius: 50%;
+      background: rgba(110, 231, 255, 0.08);
+      filter: blur(80px);
+      top: 35%;
+      left: -180px;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      width: 380px;
+      height: 380px;
+      border-radius: 50%;
+      background: rgba(155, 140, 255, 0.09);
+      filter: blur(80px);
+      right: -150px;
+      bottom: 10%;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 40px));
+      margin: auto;
+    }
+
+    .glass {
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(1120px, calc(100% - 30px));
+      padding: 13px 18px;
+      border-radius: 18px;
+      z-index: 1000;
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      font-weight: 800;
+      font-size: 1.1rem;
+      letter-spacing: -0.03em;
+    }
+
+    .logo span {
+      color: var(--primary);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .nav-links a {
+      transition: 0.25s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .nav-btn {
+      padding: 9px 15px;
+      border-radius: 12px;
+      background: rgba(110, 231, 255, 0.12);
+      border: 1px solid rgba(110, 231, 255, 0.25);
+      color: var(--primary);
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 140px 0 80px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      align-items: center;
+      gap: 70px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 13px;
+      border-radius: 999px;
+      color: var(--primary);
+      font-size: 0.82rem;
+      margin-bottom: 22px;
+    }
+
+    .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #5ff39c;
+      box-shadow: 0 0 14px #5ff39c;
+    }
+
+    h1 {
+      font-size: clamp(3.1rem, 7vw, 6.5rem);
+      line-height: 0.95;
+      letter-spacing: -0.065em;
+      max-width: 800px;
+    }
+
+    .gradient-text {
+      background: linear-gradient(90deg, var(--primary), #b7a8ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-text {
+      max-width: 650px;
+      margin-top: 25px;
+      color: var(--muted);
+      font-size: 1.08rem;
+      line-height: 1.8;
+    }
+
+    .actions {
+      display: flex;
+      gap: 13px;
+      margin-top: 32px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 13px 20px;
+      border-radius: 14px;
+      font-weight: 750;
+      font-size: 0.92rem;
+      transition: 0.25s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), #9d91ff);
+      color: #06101c;
+    }
+
+    .btn-secondary {
+      border: 1px solid var(--glass-border);
+      background: rgba(255,255,255,0.06);
+      color: var(--text);
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+    }
+
+    .hero-card {
+      padding: 25px;
+      border-radius: 28px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .profile-orb {
+      width: 180px;
+      height: 180px;
+      margin: 5px auto 25px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background:
+        linear-gradient(145deg, rgba(110,231,255,.3), rgba(155,140,255,.25)),
+        rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.2);
+      box-shadow: 0 0 80px rgba(110,231,255,.15);
+      font-size: 4rem;
+      font-weight: 850;
+      color: var(--primary);
+    }
+
+    .hero-card h3 {
+      text-align: center;
+      font-size: 1.25rem;
+    }
+
+    .hero-card p {
+      text-align: center;
+      color: var(--muted);
+      margin-top: 7px;
+      line-height: 1.6;
+    }
+
+    .mini-stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-top: 25px;
+    }
+
+    .stat {
+      padding: 15px;
+      border-radius: 15px;
+      background: rgba(255,255,255,.045);
+      border: 1px solid rgba(255,255,255,.08);
+    }
+
+    .stat strong {
+      display: block;
+      color: var(--primary);
+      font-size: 1.15rem;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 0.76rem;
+    }
+
+    /* Sections */
+    section {
+      padding: 100px 0;
+    }
+
+    .section-title {
+      margin-bottom: 42px;
+    }
+
+    .section-title small {
+      color: var(--primary);
+      font-weight: 750;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      font-size: .72rem;
+    }
+
+    .section-title h2 {
+      margin-top: 9px;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      letter-spacing: -0.045em;
+    }
+
+    .section-title p {
+      color: var(--muted);
+      max-width: 650px;
+      margin-top: 12px;
+      line-height: 1.7;
+    }
+
+    .about-card {
+      padding: 32px;
+      border-radius: var(--radius);
+      line-height: 1.85;
+      color: var(--muted);
+    }
+
+    .about-card strong {
+      color: var(--text);
+    }
+
+    /* Skills */
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 11px;
+    }
+
+    .skill {
+      padding: 11px 15px;
+      border-radius: 13px;
+      color: #dcecff;
+      background: rgba(255,255,255,.055);
+      border: 1px solid rgba(255,255,255,.1);
+      transition: .25s ease;
+    }
+
+    .skill:hover {
+      transform: translateY(-3px);
+      border-color: rgba(110,231,255,.35);
+      color: var(--primary);
+    }
+
+    /* Projects */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .project {
+      padding: 25px;
+      border-radius: var(--radius);
+      transition: .3s ease;
+    }
+
+    .project:hover {
+      transform: translateY(-6px);
+      border-color: rgba(110,231,255,.28);
+    }
+
+    .project-number {
+      color: var(--primary);
+      font-size: .75rem;
+      font-weight: 800;
+    }
+
+    .project h3 {
+      margin-top: 15px;
+      font-size: 1.3rem;
+    }
+
+    .project p {
+      color: var(--muted);
+      margin: 10px 0 18px;
+      line-height: 1.7;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+
+    .tag {
+      padding: 6px 9px;
+      border-radius: 8px;
+      background: rgba(110,231,255,.07);
+      color: #bdeeff;
+      font-size: .72rem;
+    }
+
+    /* Experience */
+    .timeline {
+      border-left: 1px solid rgba(255,255,255,.15);
+      margin-left: 8px;
+      padding-left: 30px;
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 35px;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: var(--primary);
+      box-shadow: 0 0 18px rgba(110,231,255,.6);
+      left: -36px;
+      top: 7px;
+    }
+
+    .timeline-item span {
+      color: var(--primary);
+      font-size: .8rem;
+      font-weight: 750;
+    }
+
+    .timeline-item h3 {
+      margin: 6px 0;
+    }
+
+    .timeline-item p {
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 750px;
+    }
+
+    /* Contact */
+    .contact {
+      text-align: center;
+      padding: 60px 25px;
+      border-radius: 30px;
+    }
+
+    .contact h2 {
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      letter-spacing: -0.05em;
+    }
+
+    .contact p {
+      color: var(--muted);
+      margin: 14px auto 25px;
+      max-width: 600px;
+      line-height: 1.7;
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 35px 0 45px;
+      color: #71839a;
+      font-size: .82rem;
+    }
+
+    /* Mobile */
+    @media (max-width: 800px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 125px;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 45px;
+      }
+
+      .hero-card {
+        max-width: 450px;
+        width: 100%;
+        margin: auto;
+      }
+
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 75px 0;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        width: min(100% - 24px, 1120px);
+      }
+
+      nav {
+        width: calc(100% - 20px);
+      }
+
+      .nav-btn {
+        display: none;
+      }
+
+      h1 {
+        font-size: 3.25rem;
+      }
+
+      .hero-text {
+        font-size: .98rem;
+      }
+
+      .about-card,
+      .project {
+        padding: 22px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav class="glass">
+    <div class="nav-inner">
+      <a class="logo" href="#home">PK<span>.</span></a>
+
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#experience">Experience</a></li>
+      </ul>
+
+      <a class="nav-btn" href="#contact">Let's Talk</a>
+    </div>
+  </nav>
+
+  <main>
+
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+
+        <div>
+          <div class="eyebrow glass">
+            <span class="dot"></span>
+            Available for opportunities
+          </div>
+
+          <h1>
+            Building <span class="gradient-text">digital experiences</span> with code.
+          </h1>
+
+          <p class="hero-text">
+            I'm <strong>Prakash Karekar</strong> — a Software Developer, AI Engineer
+            and CTO focused on building practical web applications, AI-powered systems,
+            scalable backends and modern digital products.
+          </p>
+
+          <div class="actions">
+            <a class="btn btn-primary" href="#projects">View Projects</a>
+            <a class="btn btn-secondary" href="#contact">Contact Me</a>
+          </div>
+        </div>
+
+        <div class="hero-card glass">
+          <div class="profile-orb">PK</div>
+          <h3>Prakash Karekar</h3>
+          <p>Software Developer · AI Engineer · CTO</p>
+
+          <div class="mini-stats">
+            <div class="stat">
+              <strong>1+</strong>
+              <span>Years Software Development</span>
+            </div>
+            <div class="stat">
+              <strong>AI</strong>
+              <span>GenAI & Agentic Systems</span>
+            </div>
+            <div class="stat">
+              <strong>Web</strong>
+              <span>Full-Stack Development</span>
+            </div>
+            <div class="stat">
+              <strong>Linux</strong>
+              <span>VPS Deployment</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-title">
+          <small>01 — About</small>
+          <h2>A developer who likes to build.</h2>
+        </div>
+
+        <div class="about-card glass">
+          <p>
+            I work across <strong>software development, artificial intelligence and
+            cybersecurity</strong>, turning ideas into functional products.
+            My experience includes building Django and Laravel backends, modern
+            web interfaces, REST APIs, AI/ML applications and deploying production
+            applications on Linux VPS infrastructure.
+          </p>
+          <br />
+          <p>
+            I enjoy solving real-world problems through clean architecture,
+            automation and practical technology. My current interests include
+            <strong>Generative AI, Agentic AI, RAG systems, backend engineering
+            and scalable web applications.</strong>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <div class="section-title">
+          <small>02 — Skills</small>
+          <h2>Tools I work with.</h2>
+          <p>A practical stack for building, deploying and maintaining modern applications.</p>
+        </div>
+
+        <div class="skills-grid">
+          <span class="skill">Python</span>
+          <span class="skill">Django</span>
+          <span class="skill">FastAPI</span>
+          <span class="skill">PHP</span>
+          <span class="skill">Laravel</span>
+          <span class="skill">JavaScript</span>
+          <span class="skill">React</span>
+          <span class="skill">Next.js</span>
+          <span class="skill">HTML5</span>
+          <span class="skill">CSS3</span>
+          <span class="skill">Tailwind CSS</span>
+          <span class="skill">MySQL</span>
+          <span class="skill">PostgreSQL</span>
+          <span class="skill">MongoDB</span>
+          <span class="skill">Redis</span>
+          <span class="skill">Git & GitHub</span>
+          <span class="skill">Linux</span>
+          <span class="skill">Nginx</span>
+          <span class="skill">Gunicorn</span>
+          <span class="skill">GenAI</span>
+          <span class="skill">RAG</span>
+          <span class="skill">Agentic AI</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <div class="section-title">
+          <small>03 — Projects</small>
+          <h2>Things I've built.</h2>
+          <p>Selected projects across web development, AI and business applications.</p>
+        </div>
+
+        <div class="projects-grid">
+
+          <article class="project glass">
+            <span class="project-number">01 / WEB</span>
+            <h3>Rotra Logistics</h3>
+            <p>
+              Logistics platform with a Django backend and Flutter mobile application,
+              backed by PostgreSQL and deployed on Linux VPS infrastructure.
+            </p>
+            <div class="tags">
+              <span class="tag">Django</span>
+              <span class="tag">PostgreSQL</span>
+              <span class="tag">Flutter</span>
+              <span class="tag">Linux</span>
+            </div>
+          </article>
+
+          <article class="project glass">
+            <span class="project-number">02 / WEB</span>
+            <h3>Alumni Portal</h3>
+            <p>
+              Full-stack alumni management platform designed to manage alumni
+              information, interactions and institutional data.
+            </p>
+            <div class="tags">
+              <span class="tag">Laravel</span>
+              <span class="tag">PHP</span>
+              <span class="tag">MySQL</span>
+              <span class="tag">Bootstrap</span>
+            </div>
+          </article>
+
+          <article class="project glass">
+            <span class="project-number">03 / AI</span>
+            <h3>GenAI & RAG Systems</h3>
+            <p>
+              AI applications using retrieval-augmented generation, multimodal
+              workflows and modern LLM technologies for practical use cases.
+            </p>
+            <div class="tags">
+              <span class="tag">Python</span>
+              <span class="tag">RAG</span>
+              <span class="tag">LLMs</span>
+              <span class="tag">FastAPI</span>
+            </div>
+          </article>
+
+          <article class="project glass">
+            <span class="project-number">04 / WEB</span>
+            <h3>Merlin Hydraulics</h3>
+            <p>
+              Professional business website created to present company services,
+              products and brand information through a responsive web experience.
+            </p>
+            <div class="tags">
+              <span class="tag">HTML</span>
+              <span class="tag">CSS</span>
+              <span class="tag">JavaScript</span>
+              <span class="tag">Responsive UI</span>
+            </div>
+          </article>
+
+          <article class="project glass">
+            <span class="project-number">05 / PLATFORM</span>
+            <h3>SkillCircle</h3>
+            <p>
+              Social learning platform with skill exchange, real-time communication,
+              gamification and administration features.
+            </p>
+            <div class="tags">
+              <span class="tag">PHP</span>
+              <span class="tag">MySQL</span>
+              <span class="tag">Tailwind</span>
+              <span class="tag">JavaScript</span>
+            </div>
+          </article>
+
+          <article class="project glass">
+            <span class="project-number">06 / AI</span>
+            <h3>AI Interview Platform</h3>
+            <p>
+              AI-powered interview concept designed to support automated interaction,
+              evaluation and candidate performance analysis.
+            </p>
+            <div class="tags">
+              <span class="tag">AI/ML</span>
+              <span class="tag">Python</span>
+              <span class="tag">NLP</span>
+              <span class="tag">Web</span>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="container">
+        <div class="section-title">
+          <small>04 — Experience</small>
+          <h2>My journey.</h2>
+        </div>
+
+        <div class="timeline">
+
+          <div class="timeline-item">
+            <span>Current</span>
+            <h3>CTO — Theta Dynamics Pvt. Ltd.</h3>
+            <p>
+              Leading technology initiatives, software development and AI-focused
+              product engineering across web and intelligent systems.
+            </p>
+          </div>
+
+          <div class="timeline-item">
+            <span>Software Development</span>
+            <h3>Full-Stack & Backend Development</h3>
+            <p>
+              Built and deployed applications using Django, Laravel, PHP, JavaScript,
+              PostgreSQL, MySQL and Linux VPS infrastructure.
+            </p>
+          </div>
+
+          <div class="timeline-item">
+            <span>AI / ML</span>
+            <h3>GenAI & Agentic AI Engineering</h3>
+            <p>
+              Worked on Generative AI, RAG pipelines, multimodal AI workflows,
+              backend APIs and AI-powered applications.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="contact glass">
+          <h2>Let's build something <span class="gradient-text">useful.</span></h2>
+          <p>
+            Have an idea, project or opportunity? Feel free to connect with me.
+          </p>
+
+          <div class="contact-links">
+            <a class="btn btn-primary" href="mailto:your-email@example.com">Email Me</a>
+            <a class="btn btn-secondary" href="https://github.com/" target="_blank">GitHub</a>
+            <a class="btn btn-secondary" href="https://www.linkedin.com/" target="_blank">LinkedIn</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    © 2026 Prakash Karekar. Built with HTML, CSS & a little creativity.
+  </footer>
+
+</body>
+</html>
