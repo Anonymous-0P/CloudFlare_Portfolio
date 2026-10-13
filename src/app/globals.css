@@ -2014,3 +2014,102 @@ svg {
     display: none;
   }
 }
+
+/* Engineering Core refinement: existing palette and editorial hierarchy retained. */
+:root {
+  --motion-reveal: 700ms;
+  --motion-interaction: 250ms;
+}
+html.gsap-smooth { scroll-behavior: auto; }
+#smooth-content { display: flow-root; }
+:focus-visible { outline: 2px solid var(--copper); outline-offset: 5px; }
+.nav-links a[aria-current="location"]:after { transform: scaleX(1); }
+.hero-content { display: grid; grid-template-columns: 1.2fr 1fr; gap: 20px; }
+.hero h1 { grid-area: 1 / 1; font-size: clamp(58px, 6.6vw, 112px); }
+.hero-bottom { grid-area: 2 / 1 / 3 / 3; }
+.hero-art { grid-area: 1 / 2; position: relative; inset: auto; width: 100%; height: 510px; min-width: 0; }
+.hero-canvas { inset: 0 0 140px; cursor: pointer; }
+.core-interface { position: absolute; bottom: 0; left: 0; right: 0; border-top: 1px solid var(--line); padding-top: 15px; }
+.core-interface > .eyebrow { color: #606656; }
+.core-controls { display: flex; flex-wrap: wrap; gap: 2px 13px; margin: 7px 0; }
+.core-controls button { background: transparent; border: 0; border-bottom: 1px solid transparent; min-height: 32px; padding: 4px 0; font-size: 11px; color: #51584a; }
+.core-controls button[aria-pressed="true"] { color: #815533; border-color: #815533; }
+.core-description { font-size: 12px; color: #606656; line-height: 1.65; min-height: 60px; max-width: 430px; }
+.sculpture-fallback { inset: 0; opacity: 1; }
+.sculpture-fallback svg { width: 100%; height: 100%; }
+.hero-canvas.webgl-lost > .sculpture-fallback { visibility: visible; }
+.cross-one { top: 5%; left: 5%; }
+.metrics strong > span { display: inline; font: inherit; color: inherit; letter-spacing: inherit; }
+.metrics strong { font-variant-numeric: tabular-nums; }
+.project-visual { contain: paint; }
+.node-connector i { animation-play-state: paused; }
+.project-visual:hover .node-connector i,
+.project:focus-within .node-connector i { animation-play-state: running; }
+.layer-hint { font-family: var(--font-mono); font-size: 11px; color: #adb69f; margin-top: 22px; }
+.network-stage { min-height: 0; }
+.architecture-diagram { padding-top: 12px; }
+.architecture-diagram > span { color: #b1baa4; }
+.architecture-diagram svg { width: 100%; height: auto; display: block; margin: 16px 0; }
+.system-path { stroke: #495440; stroke-width: 1.5; transition: stroke 250ms; }
+.system-path.active { stroke: #caa17d; stroke-dasharray: 5 8; animation: circuit-flow 2s linear infinite; }
+.system-node rect { fill: #283024; stroke: #6a765d; transition: fill 250ms, stroke 250ms; }
+.system-node.active rect { fill: #403a2b; stroke: #caa17d; }
+.system-node text { fill: #adb89e; font: 12px var(--font-mono), monospace; }
+.system-node.active text { fill: #ebc5a3; }
+.system-node .system-node-label { font-size: 12px; }
+.diagram-center { fill: #aab49c; font: 10px var(--font-mono), monospace; letter-spacing: 1.5px; }
+.diagram-subtitle { fill: #aab49c; font: 12px var(--font-serif), serif; }
+.layer-detail { min-height: 200px; }
+.layer-copy { animation: layer-enter 250ms ease-out; }
+.layer-tools { font-size: 11px; }
+.static-layers { display: grid; gap: 24px; margin-top: 30px; }
+.signature-mark { animation: none; }
+.tech-row { transition: border-color var(--motion-interaction); }
+.tech-row:hover { border-color: #815533; }
+@keyframes circuit-flow { to { stroke-dashoffset: -26; } }
+@keyframes layer-enter { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+@media (min-width: 768px) and (max-height: 800px) {
+  .hero-content { min-height: 380px; }
+  .hero h1 { font-size: min(6.6vw, 10vh); }
+  .hero-art { height: 380px; top: auto; }
+  .hero-bottom { margin: 24px 0; }
+}
+@media (max-width: 1050px) and (min-width: 768px) {
+  .hero-content { grid-template-columns: 1.12fr 1fr; gap: 12px; }
+  .hero h1 { font-size: 6.6vw; }
+  .hero-art { height: 450px; }
+  .hero-canvas { bottom: 175px; }
+  .core-description { min-height: 85px; }
+}
+@media (max-width: 767px) {
+  .hero-content { display: contents; }
+  .hero h1 { order: 1; }
+  .hero-bottom { order: 2; }
+  .hero-art { order: 3; }
+  .hero-footer { order: 4; }
+  .hero h1 { font-size: clamp(45px, 10.2vw, 78px); }
+  .hero-art { position: relative; inset: auto; width: 100%; height: 340px; margin: 12px 0 0; opacity: 1; }
+  .hero-canvas { inset: 0 0 145px; }
+  .core-interface { padding-top: 12px; }
+  .core-controls { gap: 0 14px; }
+  .core-controls button { min-height: 44px; font-size: 12px; }
+  .core-description { min-height: 60px; font-size: 12px; }
+  .hero-bottom { margin-top: 24px; }
+  .eyebrow { font-size: 9px; }
+  .hero-kicker .eyebrow { font-size: 9px; }
+  .project-copy > p, .project-copy .contribution, .timeline p, .timeline li, .layer-detail p { font-size: 14px; }
+  .stack > span, .case-link, .tech-row > .eyebrow, .metrics span { font-size: 10px; }
+  .visual-top, .visual-bottom { font-size: 8px; }
+  .diagram-node > span:last-of-type, .case-study .diagram-node > span:last-of-type { font-size: 9px; overflow-wrap: anywhere; }
+  .system-diagram { transform: none; padding: 20px 10px; }
+  .system-node .system-node-label { font-size: 14px; }
+  .layer-detail { min-height: 215px; }
+  .layer-tools { font-size: 11px; }
+  .signal-controls button { min-height: 44px; }
+  .menu-toggle { min-width: 44px; min-height: 44px; }
+  .metrics p, .tech-row p, .education p, .certifications li { font-size: 12px; }
+  .signal-panel > p { font-size: 10px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .layer-copy, .system-path.active { animation: none; }
+}

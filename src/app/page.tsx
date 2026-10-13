@@ -1,7 +1,7 @@
 import { ArrowDown, ArrowUpRight, ArrowRight } from "lucide-react";
 import { Navigation } from "@/components/navigation";
 import { MotionShell } from "@/components/motion-shell";
-import { SceneLoader } from "@/components/scene-loader";
+import { HeroCore } from "@/components/hero-core";
 import { ProjectVisual } from "@/components/project-visual";
 import { Engineering } from "@/components/engineering";
 import { SecuritySignal } from "@/components/security";
@@ -13,8 +13,9 @@ import {
 } from "@/data/portfolio";
 export default function Home() {
   return (
-    <MotionShell>
+    <>
       <Navigation />
+      <MotionShell>
       <main id="main">
         <section className="hero">
           <div className="hero-kicker hero-reveal">
@@ -40,17 +41,6 @@ export default function Home() {
                 </span>
               </span>
             </h1>
-            <div className="hero-art">
-              <div className="art-cross cross-one">+</div>
-              <div className="art-cross cross-two">+</div>
-              <SceneLoader />
-              <div className="object-caption hero-reveal">
-                <span className="eyebrow">ASSEMBLY 001</span>
-                <span>An exploration of connected systems</span>
-              </div>
-              <div className="orbit-label">FORM FOLLOWS FUNCTION</div>
-            </div>
-          </div>
           <div className="hero-bottom hero-reveal">
             <div className="hero-intro">
               <span className="tiny-square" />
@@ -68,6 +58,8 @@ export default function Home() {
             <a className="subtle-link" href="#contact">
               Get in touch <ArrowUpRight size={17} />
             </a>
+          </div>
+            <HeroCore />
           </div>
           <div className="hero-footer eyebrow">
             <span>ENGINEERED TO WORK.</span>
@@ -281,7 +273,7 @@ export default function Home() {
               ],
             ].map(([n, label, context]) => (
               <div key={n} data-reveal>
-                <strong>{n}</strong>
+                <strong><span className="sr-only">{n}</span><span data-count={n} aria-hidden="true">{n}</span></strong>
                 <p>{label}</p>
                 <span>{context}</span>
               </div>
@@ -363,7 +355,7 @@ export default function Home() {
             <span className="eyebrow">09 / FOUNDATIONS</span>
             <span className="eyebrow">ALWAYS A STUDENT</span>
           </div>
-          <div className="education-layout">
+          <div className="education-layout" data-reveal>
             <div>
               <span className="eyebrow">EDUCATION</span>
               <h3>
@@ -429,6 +421,7 @@ export default function Home() {
           </div>
         </footer>
       </main>
-    </MotionShell>
+      </MotionShell>
+    </>
   );
 }
